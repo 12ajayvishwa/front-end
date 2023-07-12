@@ -10,19 +10,24 @@ const Nav = () => {
     }
     return (
         <div>
-            <ul className="nav-ul">
+            <img
+                alt="logo"
+                className="logo"
+                src="https://yt3.googleusercontent.com/ytc/AOPolaQIStUG5uIiAdQyxr_WrYqI_FD2kTR2AzjYMEtDog=s900-c-k-c0x00ffffff-no-rj"
+            ></img>
+            {auth ? <ul className="nav-ul ">
                 <li><Link to="/">Products</Link></li>
                 <li><Link to="/add">Add Products</Link></li>
                 <li><Link to="/update">Update Product</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
-                {
-                    auth ? <li><Link onClick={logout} to="/logout">logout</Link></li>
-                        : <>
-                            <li><Link to="/signup">Sign Up</Link></li>
-                            <li><Link to="/login">Login</Link></li>
-                        </>
-                }
+                <li><Link onClick={logout} to="/logout">logout ({JSON.parse(auth).name})</Link></li>
             </ul>
+                :
+                <ul className="nav-ul nav-right">
+                    <li><Link to="/signup">Sign Up</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                </ul>
+            }
         </div>
     )
 }
