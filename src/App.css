@@ -9,6 +9,10 @@
   text-decoration: none;
 }
 
+.button-operation {
+  margin: 8px;
+}
+
 
 .nav-ul {
   padding: 5px;
@@ -24,11 +28,14 @@
   width: 100%;
   background-color: skyblue;
 }
-.login{
+
+.login {
   margin-left: 30%;
   margin-top: 100px
 }
-.register, .product{
+
+.register,
+.product {
   margin-left: 30%;
 }
 
@@ -40,36 +47,43 @@
   border: 1px solid;
   cursor: pointer;
 }
-.nav-right{
+
+.nav-right {
   text-align: right;
 }
-.logo{
+
+.logo {
   width: 45px;
   float: left;
   border-radius: 50%;
   margin-top: 3px;
   margin-left: 3px;
 }
-.invalid-input{
+
+.invalid-input {
   color: red;
   margin-top: -20px;
   display: block;
   margin-left: 25px;
 }
-.product-list{
+
+.product-list {
   text-align: center;
   margin-top: 50px;
 }
-.product-list ul li{
+
+.product-list ul li {
   display: inline-block;
   border: 1px solid skyblue;
   padding: 5px;
   width: 150px;
 }
-.product-list ul{
+
+.product-list ul {
   margin: 0;
   margin-left: 15;
 }
+
 .inputBox {
   margin: 25px;
   display: block;

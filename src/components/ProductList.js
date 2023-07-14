@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 
 const ProductList = () => {
     const [product, setProduct] = useState([]);
@@ -11,24 +12,27 @@ const ProductList = () => {
         let result = await fetch('http://localhost:5000/get-product');
         result = await result.json();
         setProduct(result);
+        
     }
     console.warn("product", product);
 
-    const deleteProduct =async(id) =>{
+    const deleteProduct = async (id) => {
         console.warn(id);
-       let result = await fetch(`http://localhost:5000/delete-product/${id}`,{
-        method:"Delete"
-       });
-       result=await result.json()
-       console.warn(result);
-       if(result){
-        alert("record is deleted")
-        getProducts();
-       }
+        let result = await fetch(`http://localhost:5000/product/${id}`, {
+            method: "Delete"
+        });
+        result = await result.json()
+        console.warn(result);
+        if (result) {
+            alert("record is deleted")
+            getProducts();
+        }
     }
     return (
-        <div className="product-list">
+        <>
+            {/* <div className="product-list">
             <h3>Product List</h3>
+
             <ul>
                 <li>S.no</li>
                 <li>Name</li>
@@ -48,7 +52,45 @@ const ProductList = () => {
                     </ul>
                 )
             }
-        </div>
+        </div> */}
+
+
+            <table className="table mt-4 ms-3">
+                <thead>
+                    <tr>
+                        <th scope="col">S.no</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Operation</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {
+                        product.map((item, index) =>
+                            <tr key={item._id}>
+                                <td>{index + 1}</td>
+                                <td>{item.name}</td>
+                                <td>${item.price}</td>
+                                <td>{item.category}</td>
+                                <td><button className="btn btn-danger" onClick={() => 
+                                    deleteProduct(item._id)}>Delete</button>
+                                    <Link className="btn btn-secondary button-operation" 
+                                    to={"/update/10"+item._id}>update</Link>
+                                    </td>
+                                
+                            </tr>
+
+                        )
+                    }
+
+                </tbody>
+            </table>
+
+
+        </>
     )
 }
 
